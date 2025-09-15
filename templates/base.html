@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ait{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</head>
+<body>
+    <!-- 粒子背景容器 -->
+    <div id="particles-js"></div>
+    
+    <!-- 导航栏 -->
+    <nav id="navbar" class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <span class="logo">Ait<span class="logo-glow">.</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="{{ url_for('index') }}" class="nav-link {% if request.endpoint == 'index' %}active{% endif %}">首页</a>
+                <a href="{{ url_for('portfolio') }}" class="nav-link {% if request.endpoint == 'portfolio' %}active{% endif %}">案例分享</a>
+                <a href="{{ url_for('projects') }}" class="nav-link {% if request.endpoint == 'projects' %}active{% endif %}">开源项目</a>
+                <a href="{{ url_for('about') }}" class="nav-link {% if request.endpoint == 'about' %}active{% endif %}">关于我们</a>
+                <a href="{{ url_for('contact') }}" class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">联系我们</a>
+            </div>
+            <!-- 移动端菜单按钮 -->
+            <div class="menu-btn" id="menuBtn">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 移动导航菜单 -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="{{ url_for('index') }}" class="mobile-link">首页</a>
+        <a href="{{ url_for('portfolio') }}" class="mobile-link">案例分享</a>
+        <a href="{{ url_for('projects') }}" class="mobile-link">开源项目</a>
+        <a href="{{ url_for('about') }}" class="mobile-link">关于我们</a>
+        <a href="{{ url_for('contact') }}" class="mobile-link">联系我们</a>
+    </div>
+    
+    <!-- 主内容区域 -->
+    <main>
+        {% block content %}
+        <!-- 页面特定内容将在这里插入 -->
+        {% endblock %}
+    </main>
+    
+    <!-- 订阅区域已移除 -->
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="logo-container">
+                        <span class="logo">Ait<span class="logo-glow">.</span></span>
+                    </div>
+                    <p class="footer-description">
+                        探索科技与创意的无限可能
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="footer-links-title">快速链接</h4>
+                    <a href="{{ url_for('index') }}" class="footer-link">首页</a>
+                    <a href="{{ url_for('portfolio') }}" class="footer-link">案例分享</a>
+                    <a href="{{ url_for('projects') }}" class="footer-link">开源项目</a>
+                    <a href="{{ url_for('about') }}" class="footer-link">关于我们</a>
+                    <a href="{{ url_for('contact') }}" class="footer-link">联系我们</a>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>&copy; 2025 Ait. 保留所有权利。</p>
+                    <div class="footer-bottom-links">
+                        <a href="#" class="footer-bottom-link">隐私政策</a>
+                        <a href="#" class="footer-bottom-link">服务条款</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+    
+    <!-- 粒子背景库 -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ url_for('static', filename='js/particles-config.js') }}"></script>
+</body>
+</html>

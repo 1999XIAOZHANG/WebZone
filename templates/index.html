@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block title %}Ait - 探索未来科技{% endblock %}
+
+{% block content %}
+    <!-- 英雄区 -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span class="text-glow">探索</span>未来
+                        <span class="typing-animation"></span>
+                    </h1>
+                    <p class="hero-subtitle">欢迎来到我们的项目空间，这里展示我们团队作品、项目和想法</p>
+                    <div class="hero-buttons">
+                        <a href="#portfolio" class="btn btn-primary">查看作品</a>
+                        <a href="#contact" class="btn btn-secondary">联系我们</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="circle-gradient"></div>
+                    <div class="hero-icon">
+                        <i class="fa fa-rocket"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- 访问统计 -->
+            <div class="visitor-count">
+                <span>访问次数: 10086+</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 关于我区域 - 预留用于个人介绍 -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="text-glow">关于</span>我们
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-container">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="团队标志" class="about-team-logo">
+                    </div>
+                </div>
+                
+                <div class="about-text">
+                    <h3 class="about-title">我们是<span class="text-glow">Ait团队</span></h3>
+                    <p class="about-description">
+                        我们是一支专注于人工智能方向的团队，致力于为客户提供高质量的AI解决方案。
+                        我们拥有丰富的经验和专业的技术，可以完成多种人工智能任务，包括但不限于
+                        机器学习、深度学习、自然语言处理、计算机视觉等领域。
+                    </p>
+                    
+                    <div class="skills-container">
+                        <h4 class="skills-title">核心技术</h4>
+                        <div class="skills-grid">
+                            <!-- 预留技能标签 -->
+                            <div class="skill-tag">Python</div>
+                            <div class="skill-tag">Web开发</div>
+                            <div class="skill-tag">数据分析</div>
+                            <div class="skill-tag">人工智能</div>
+                            <div class="skill-tag">设计</div>
+                            <div class="skill-tag">AIGC</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 案例分享区域 -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="text-glow">案例</span>分享
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- 最新案例项目 -->
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <div class="placeholder-portfolio">
+                                <i class="fa fa-globe"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3 class="portfolio-title">网站项目名称</h3>
+                            <p class="portfolio-description">这个项目的详细描述，包括使用的技术和实现的功能。</p>
+                            <a href="#" class="portfolio-link">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="design">
+                    <div class="portfolio-card">
+                        <div class="portfolio-image">
+                            <div class="placeholder-portfolio">
+                                <i class="fa fa-paint-brush"></i>
+                            </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3 class="portfolio-title">UI设计项目</h3>
+                            <p class="portfolio-description">这个设计项目的详细描述，包括设计理念和工具。</p>
+                            <a href="#" class="portfolio-link">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-more">
+                <a href="{{ url_for('portfolio') }}" class="btn btn-primary">查看更多项目</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 开源项目区域 -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="text-glow">开源</span>项目
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="projects-container">
+                <!-- 最新开源项目 -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fa fa-brain"></i>
+                        </div>
+                        <h3 class="project-title">智能助手系统</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            基于自然语言处理和机器学习技术开发的智能助手系统，能够理解用户意图并提供精准响应。
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">NLP</span>
+                            <span class="tech-tag">TensorFlow</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="#" class="project-link">了解更多</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fa fa-chart-line"></i>
+                        </div>
+                        <h3 class="project-title">数据分析项目</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            这个数据分析项目的详细描述，包括数据来源和分析结果。
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">Matplotlib</span>
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <a href="#" class="project-link">了解更多</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-more">
+                <a href="{{ url_for('projects') }}" class="btn btn-primary">查看所有项目</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 联系区域 -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="text-glow">联系</span>我们
+                </h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-form full-width">
+                    <h3 class="form-title">发送消息</h3>
+                    <form id="contactForm" action="#" method="post">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="您的名字" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="主题" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="您的消息" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">发送消息</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
