@@ -1,29 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}项目展示 | Ait{% endblock %}
+{% block title %}开源项目 | Ait{% endblock %}
 
 {% block content %}
     <!-- 项目标题区域 -->
     <section class="projects-header-section">
         <div class="container">
             <h1 class="section-title-large">
-                <span class="text-glow">项目</span>展示
+                <span class="text-glow">开源</span>项目
             </h1>
-            <p class="section-description">探索我的技术项目和创新成果</p>
-        </div>
-    </section>
-    
-    <!-- 项目分类过滤区域 -->
-    <section class="projects-filters-section">
-        <div class="container">
-            <div class="projects-filters">
-                <button class="filter-btn active" data-filter="all">所有项目</button>
-                <button class="filter-btn" data-filter="web">Web开发</button>
-                <button class="filter-btn" data-filter="ai">人工智能</button>
-                <button class="filter-btn" data-filter="data">数据分析</button>
-                <button class="filter-btn" data-filter="mobile">移动应用</button>
-                <button class="filter-btn" data-filter="other">其他项目</button>
-            </div>
+            <p class="section-description">探索我们的开源贡献和技术成果</p>
         </div>
     </section>
     
@@ -31,333 +17,94 @@
     <section class="featured-projects-section">
         <div class="container">
             <h2 class="section-subtitle">
-                <span class="text-glow">精选</span>项目
+                <span class="text-glow">GitHub</span>项目展示
             </h2>
             
-            <!-- 主要精选项目 -->
-            <div class="featured-project-main">
-                <div class="featured-project-content">
-                    <div class="featured-project-info">
-                        <div class="project-category">Web开发</div>
-                        <h3 class="featured-project-title">未来科技门户</h3>
-                        <p class="featured-project-description">
-                            这是一个集科技资讯、前沿技术展示和互动社区于一体的综合性科技门户。
-                            采用现代化的前后端分离架构，结合人工智能推荐系统，为用户提供个性化的内容体验。
-                        </p>
-                        <div class="project-tech-list">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Flask</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">AI推荐</span>
+            <!-- 项目列表 - 左右两栏布局 -->
+            <div class="projects-columns" style="display: flex; flex-wrap: wrap; gap: 30px;">
+                <div class="projects-column-left" style="flex: 1; min-width: 350px;">
+                    {% for project in projects %}
+                    {% if loop.index is odd %}
+                    <div class="project-card">
+                        <div class="project-icon" style="margin-bottom: 15px;">
+                            <i class="fa {{ project.icon }}" style="font-size: 2.5rem;"></i>
                         </div>
-                        <div class="featured-project-links">
-                            <a href="#" class="btn btn-primary">查看详情</a>
-                            <a href="#" class="btn btn-secondary">访问项目</a>
+                        <div class="project-info">
+                            <h3 class="project-title">{{ project.title }}</h3>
+                            <p class="project-description">
+                                {{ project.description }}
+                            </p>
+                            <div class="project-features">
+                                <h4>相关技术：</h4>
+                                <ul style="font-size: 0.9rem;">
+                                    {% for tech in project.tech %}
+                                    <li>{{ tech }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="project-links">
+                                <a href="{{ project.github_url }}" target="_blank" class="btn btn-primary">访问GitHub项目</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="featured-project-image">
-                        <div class="placeholder-featured">
-                            <i class="fa fa-globe"></i>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                
+                <div class="projects-column-right" style="flex: 1; min-width: 350px;">
+                    {% for project in projects %}
+                    {% if loop.index is even %}
+                    <div class="project-card">
+                        <div class="project-icon" style="margin-bottom: 15px;">
+                            <i class="fa {{ project.icon }}" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <div class="project-info">
+                            <h3 class="project-title">{{ project.title }}</h3>
+                            <p class="project-description">
+                                {{ project.description }}
+                            </p>
+                            <div class="project-features">
+                                <h4>相关技术：</h4>
+                                <ul style="font-size: 0.9rem;">
+                                    {% for tech in project.tech %}
+                                    <li>{{ tech }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="project-links">
+                                <a href="{{ project.github_url }}" target="_blank" class="btn btn-primary">访问GitHub项目</a>
+                            </div>
                         </div>
                     </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- 项目列表区域 - 预留用于展示更多项目 -->
-    <section class="projects-list-section">
+    <!-- GitHub账号区域 -->
+    <section class="github-section" style="margin-top: 80px; background-color: rgba(255, 255, 255, 0.05); padding: 40px 0;">
         <div class="container">
-            <div class="projects-grid">
-                <!-- 项目卡片 1 -->
-                <div class="project-card expanded" data-category="ai">
-                    <div class="project-card-header">
-                        <div class="project-card-icon">
-                            <i class="fa fa-brain"></i>
-                        </div>
-                        <h3 class="project-card-title">智能助手系统</h3>
-                    </div>
-                    <div class="project-card-body">
-                        <p class="project-card-description">
-                            基于自然语言处理和机器学习技术开发的智能助手系统，能够理解用户意图并提供精准响应。
-                        </p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">TensorFlow</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="#" class="project-card-link">查看详情</a>
-                    </div>
-                </div>
-                
-                <!-- 项目卡片 2 -->
-                <div class="project-card expanded" data-category="data">
-                    <div class="project-card-header">
-                        <div class="project-card-icon">
-                            <i class="fa fa-chart-line"></i>
-                        </div>
-                        <h3 class="project-card-title">数据可视化平台</h3>
-                    </div>
-                    <div class="project-card-body">
-                        <p class="project-card-description">
-                            用于大数据分析和可视化的平台，支持多种数据源接入和实时数据处理展示。
-                        </p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Django</span>
-                            <span class="tech-tag">D3.js</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="#" class="project-card-link">查看详情</a>
-                    </div>
-                </div>
-                
-                <!-- 项目卡片 3 -->
-                <div class="project-card expanded" data-category="mobile">
-                    <div class="project-card-header">
-                        <div class="project-card-icon">
-                            <i class="fa fa-mobile-alt"></i>
-                        </div>
-                        <h3 class="project-card-title">移动应用开发框架</h3>
-                    </div>
-                    <div class="project-card-body">
-                        <p class="project-card-description">
-                            跨平台移动应用开发框架，支持一次编写多平台部署，提高开发效率和代码复用率。
-                        </p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Firebase</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="#" class="project-card-link">查看详情</a>
-                    </div>
-                </div>
-                
-                <!-- 项目卡片 4 -->
-                <div class="project-card expanded" data-category="web">
-                    <div class="project-card-header">
-                        <div class="project-card-icon">
-                            <i class="fa fa-code"></i>
-                        </div>
-                        <h3 class="project-card-title">全栈开发框架</h3>
-                    </div>
-                    <div class="project-card-body">
-                        <p class="project-card-description">
-                            轻量级全栈开发框架，集成前端、后端和数据库操作，简化Web应用开发流程。
-                        </p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">FastAPI</span>
-                            <span class="tech-tag">Vue.js</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="#" class="project-card-link">查看详情</a>
-                    </div>
-                </div>
-                
-                <!-- 项目卡片 5 -->
-                <div class="project-card expanded" data-category="other">
-                    <div class="project-card-header">
-                        <div class="project-card-icon">
-                            <i class="fa fa-robot"></i>
-                        </div>
-                        <h3 class="project-card-title">物联网控制系统</h3>
-                    </div>
-                    <div class="project-card-body">
-                        <p class="project-card-description">
-                            基于Python的物联网设备控制和监控系统，支持远程设备管理和数据采集分析。
-                        </p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">MQTT</span>
-                            <span class="tech-tag">Raspberry Pi</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="#" class="project-card-link">查看详情</a>
-                    </div>
-                </div>
-                
-                <!-- 项目卡片 6 -->
-                <div class="project-card expanded" data-category="ai">
-                    <div class="project-card-header">
-                        <div class="project-card-icon">
-                            <i class="fa fa-image"></i>
-                        </div>
-                        <h3 class="project-card-title">计算机视觉应用</h3>
-                    </div>
-                    <div class="project-card-body">
-                        <p class="project-card-description">
-                            基于深度学习的计算机视觉应用，实现图像识别、物体检测和场景分析功能。
-                        </p>
-                        <div class="project-card-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">PyTorch</span>
-                        </div>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="#" class="project-card-link">查看详情</a>
-                    </div>
-                </div>
-                
-                <!-- 预留更多项目卡片位置 -->
-                <!-- 用户可以在这里继续添加自己的项目 -->
-            </div>
-            
-            <!-- 加载更多按钮 -->
-            <div class="projects-load-more">
-                <button class="btn btn-primary" id="loadMoreProjectsBtn">加载更多项目</button>
-            </div>
-        </div>
-    </section>
-    
-    <!-- 项目统计和技能区域 -->
-    <section class="project-stats-section">
-        <div class="container">
-            <div class="project-stats-content">
-                <div class="project-stats">
-                    <h3 class="stats-title">项目统计</h3>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number" data-count="24">0</div>
-                            <div class="stat-label">完成项目</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-count="18">0</div>
-                            <div class="stat-label">Web项目</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-count="12">0</div>
-                            <div class="stat-label">AI项目</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-count="6">0</div>
-                            <div class="stat-label">移动项目</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="project-skills">
-                    <h3 class="skills-title">技术栈</h3>
-                    <div class="skills-cloud">
-                        <span class="skill-tag large">Python</span>
-                        <span class="skill-tag">Flask</span>
-                        <span class="skill-tag">Django</span>
-                        <span class="skill-tag large">JavaScript</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Vue.js</span>
-                        <span class="skill-tag large">AI</span>
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Docker</span>
-                    </div>
-                </div>
-            </div>
+            <a href="https://github.com/1999XIAOZHANG" target="_blank" class="github-link" style="display: flex; align-items: center; justify-content: center; padding: 20px;">
+                <i class="fa fa-github" style="font-size: 2.5rem; margin-right: 15px;"></i>
+                <span style="font-size: 1.5rem;">GitHub: 1999XIAOZHANG</span>
+            </a>
         </div>
     </section>
 
     <!-- 项目特定的JavaScript -->
     <script>
-        // 项目过滤功能
+        // 页面加载完成后的初始化
         document.addEventListener('DOMContentLoaded', function() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const projectItems = document.querySelectorAll('.project-card');
+            // 添加页面元素动画效果
+            const fadeElements = document.querySelectorAll('.section-subtitle, .project-card, .github-link');
             
-            // 过滤项目
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // 移除所有按钮的active类
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    // 添加当前按钮的active类
-                    this.classList.add('active');
-                    
-                    const filter = this.getAttribute('data-filter');
-                    
-                    // 过滤项目
-                    projectItems.forEach(item => {
-                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                            item.style.display = 'block';
-                            // 添加动画效果
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                                item.style.transform = 'translateY(0)';
-                            }, 50);
-                        } else {
-                            item.style.opacity = '0';
-                            item.style.transform = 'translateY(20px)';
-                            // 隐藏元素
-                            setTimeout(() => {
-                                item.style.display = 'none';
-                            }, 300);
-                        }
-                    });
-                });
-            });
-            
-            // 数字增长动画
-            const statNumbers = document.querySelectorAll('.stat-number');
-            
-            const animateNumbers = () => {
-                statNumbers.forEach(number => {
-                    const target = parseInt(number.getAttribute('data-count'));
-                    const duration = 2000; // 动画持续时间
-                    const stepTime = 20; // 每步时间
-                    const steps = duration / stepTime;
-                    const increment = target / steps;
-                    let current = 0;
-                    
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            clearInterval(timer);
-                            current = target;
-                        }
-                        number.textContent = Math.floor(current);
-                    }, stepTime);
-                });
-            };
-            
-            // 检测元素是否在视口中
-            const isInViewport = (element) => {
-                const rect = element.getBoundingClientRect();
-                return (
-                    rect.top <= (window.innerHeight || document.documentElement.clientHeight)
-                );
-            };
-            
-            // 监听滚动事件
-            let animated = false;
-            window.addEventListener('scroll', function() {
-                const statsSection = document.querySelector('.project-stats-section');
-                if (isInViewport(statsSection) && !animated) {
-                    animateNumbers();
-                    animated = true;
-                }
-            });
-            
-            // 加载更多按钮事件
-            const loadMoreProjectsBtn = document.getElementById('loadMoreProjectsBtn');
-            loadMoreProjectsBtn.addEventListener('click', function() {
-                // 这里可以添加加载更多项目的逻辑
-                // 例如从服务器请求更多数据或显示隐藏的项目
-                this.innerHTML = '<i class="fa fa-spinner fa-spin"></i> 加载中...';
-                
-                // 模拟加载延迟
+            fadeElements.forEach((element, index) => {
                 setTimeout(() => {
-                    this.innerHTML = '没有更多项目了';
-                    this.disabled = true;
-                    this.classList.add('disabled');
-                }, 1500);
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 200);
             });
         });
     </script>

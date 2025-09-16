@@ -1,211 +1,46 @@
 {% extends "base.html" %}
 
-{% block title %}作品集 | Ait{% endblock %}
+{% block title %}基于嵌入式的墙面平整度检测系统 | Ait{% endblock %}
 
 {% block content %}
-    <!-- 作品集标题区域 -->
+    <!-- 案例作品集标题区域 -->
     <section class="portfolio-header-section">
         <div class="container">
             <h1 class="section-title-large">
-                <span class="text-glow">我的</span>作品集
+                <span class="text-glow">案例</span>作品集展示
             </h1>
-            <p class="section-description">探索我的创意作品和项目成果</p>
+            <p class="section-description">探索我们团队的创新成果</p>
         </div>
     </section>
     
-    <!-- 作品集过滤区域 -->
-    <section class="portfolio-filters-section">
-        <div class="container">
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">全部作品</button>
-                <button class="filter-btn" data-filter="web">Web开发</button>
-                <button class="filter-btn" data-filter="design">设计作品</button>
-                <button class="filter-btn" data-filter="ai">人工智能</button>
-                <button class="filter-btn" data-filter="data">数据分析</button>
-                <button class="filter-btn" data-filter="other">其他作品</button>
-            </div>
-        </div>
-    </section>
-    
-    <!-- 作品集网格区域 - 预留用于展示更多作品 -->
+    <!-- 作品集网格区域 - 左右两栏布局 -->
     <section class="portfolio-grid-section">
         <div class="container">
             <div class="portfolio-grid large">
-                <!-- 作品集项目 1 -->
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-card expanded">
-                        <div class="portfolio-image">
-                            <div class="placeholder-portfolio">
-                                <i class="fa fa-globe"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h3 class="portfolio-title">网站项目名称</h3>
-                                    <p class="portfolio-description">这个项目的详细描述，包括使用的技术和实现的功能。</p>
-                                    <a href="#" class="btn btn-primary small">查看详情</a>
+                <!-- 左侧作品集项目 -->
+                <div class="portfolio-column-left">
+                    <!-- 作品集项目 1 - 基于嵌入式的墙面平整度检测系统 -->
+                    <div class="portfolio-item" data-category="image-processing">
+                        <div class="portfolio-card expanded">
+                            <div class="portfolio-image">
+                                <img src="{{ url_for('static', filename='images/project1/fengmian.png') }}" alt="基于嵌入式的墙面平整度检测系统" class="portfolio-image-full">
+                                <div class="portfolio-overlay">
+                                    <div class="portfolio-overlay-content">
+                                        <h3 class="portfolio-title">基于嵌入式的墙面平整度检测系统开发及应用</h3>
+                                        <p class="portfolio-description">结合计算机视觉和深度学习技术，设计并实现了一种高效、高精度的墙面平整度检测系统。建立了双目视觉模型，提出了基于激光光栅墙面的平整度检测算法，并开发了基于树莓派的嵌入式软硬件系统，实现了误差控制在4mm以内的三维重建效果。</p>
+                                        <a href="{{ url_for('project1') }}" class="btn btn-primary small">查看详情</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- 作品集项目 2 -->
-                <div class="portfolio-item" data-category="design">
-                    <div class="portfolio-card expanded">
-                        <div class="portfolio-image">
-                            <div class="placeholder-portfolio">
-                                <i class="fa fa-paint-brush"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h3 class="portfolio-title">UI设计项目</h3>
-                                    <p class="portfolio-description">这个设计项目的详细描述，包括设计理念和工具。</p>
-                                    <a href="#" class="btn btn-primary small">查看详情</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- 右侧作品集项目区域（保持空白） -->
+                <div class="portfolio-column-right">
+                    <!-- 当前为空，如需添加内容可在此处添加 -->
                 </div>
-                
-                <!-- 作品集项目 3 -->
-                <div class="portfolio-item" data-category="ai">
-                    <div class="portfolio-card expanded">
-                        <div class="portfolio-image">
-                            <div class="placeholder-portfolio">
-                                <i class="fa fa-brain"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h3 class="portfolio-title">AI应用项目</h3>
-                                    <p class="portfolio-description">这个AI项目的详细描述，包括算法和应用场景。</p>
-                                    <a href="#" class="btn btn-primary small">查看详情</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 作品集项目 4 -->
-                <div class="portfolio-item" data-category="data">
-                    <div class="portfolio-card expanded">
-                        <div class="portfolio-image">
-                            <div class="placeholder-portfolio">
-                                <i class="fa fa-chart-line"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h3 class="portfolio-title">数据分析项目</h3>
-                                    <p class="portfolio-description">这个数据分析项目的详细描述，包括数据来源和分析结果。</p>
-                                    <a href="#" class="btn btn-primary small">查看详情</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 作品集项目 5 -->
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-card expanded">
-                        <div class="portfolio-image">
-                            <div class="placeholder-portfolio">
-                                <i class="fa fa-code"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h3 class="portfolio-title">Web应用项目</h3>
-                                    <p class="portfolio-description">这个Web应用的详细描述，包括架构设计和核心功能。</p>
-                                    <a href="#" class="btn btn-primary small">查看详情</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 作品集项目 6 -->
-                <div class="portfolio-item" data-category="other">
-                    <div class="portfolio-card expanded">
-                        <div class="portfolio-image">
-                            <div class="placeholder-portfolio">
-                                <i class="fa fa-cube"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h3 class="portfolio-title">其他创意项目</h3>
-                                    <p class="portfolio-description">这个创意项目的详细描述，包括项目背景和创新点。</p>
-                                    <a href="#" class="btn btn-primary small">查看详情</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 预留更多作品集项目位置 -->
-                <!-- 用户可以在这里继续添加自己的作品 -->
-            </div>
-            
-            <!-- 加载更多按钮 -->
-            <div class="portfolio-load-more">
-                <button class="btn btn-primary" id="loadMoreBtn">加载更多作品</button>
             </div>
         </div>
     </section>
-    
-    <!-- 作品集统计区域已隐藏 -->
-
-    <!-- 作品集特定的JavaScript -->
-    <script>
-        // 作品集过滤功能
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-            
-            // 过滤作品
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // 移除所有按钮的active类
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    // 添加当前按钮的active类
-                    this.classList.add('active');
-                    
-                    const filter = this.getAttribute('data-filter');
-                    
-                    // 过滤作品
-                    portfolioItems.forEach(item => {
-                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                            item.style.display = 'block';
-                            // 添加动画效果
-                            setTimeout(() => {
-                                item.style.opacity = '1';
-                                item.style.transform = 'scale(1)';
-                            }, 50);
-                        } else {
-                            item.style.opacity = '0';
-                            item.style.transform = 'scale(0.8)';
-                            // 隐藏元素
-                            setTimeout(() => {
-                                item.style.display = 'none';
-                            }, 300);
-                        }
-                    });
-                });
-            });
-            
-            // 数字增长动画相关代码已移除，因为统计区域已隐藏
-            
-            // 加载更多按钮事件
-            const loadMoreBtn = document.getElementById('loadMoreBtn');
-            loadMoreBtn.addEventListener('click', function() {
-                // 这里可以添加加载更多作品的逻辑
-                // 例如从服务器请求更多数据或显示隐藏的作品
-                this.innerHTML = '<i class="fa fa-spinner fa-spin"></i> 加载中...';
-                
-                // 模拟加载延迟
-                setTimeout(() => {
-                    this.innerHTML = '没有更多作品了';
-                    this.disabled = true;
-                    this.classList.add('disabled');
-                }, 1500);
-            });
-        });
-    </script>
 {% endblock %}

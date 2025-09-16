@@ -23,6 +23,43 @@ if not os.path.exists(RECORD_FILE):
     with open(RECORD_FILE, 'w') as f:
         f.write('时间戳,姓名,邮箱,主题,内容\n')
 
+# 定义项目数据
+projects_data = [
+    {
+        'id': 1,
+        'title': '相机标定工具',
+        'description': '基于OpenCV开发的相机标定工具，用于相机内参和外参的计算，支持多种标定板和标定模式。',
+        'icon': 'fa-camera',
+        'tech': ['Python', 'OpenCV', '计算机视觉'],
+        'github_url': 'https://github.com/1999XIAOZHANG/calibration'
+    },
+    {
+        'id': 2,
+        'title': '智能视觉分析与目标定位系统',
+        'description': '基于计算机视觉技术的目标检测与跟踪系统，能够实时识别和定位特定目标。',
+        'icon': 'fa-eye',
+        'tech': ['Python', 'OpenCV', '机器学习'],
+        'github_url': 'https://github.com/1999XIAOZHANG/auto_find_ball'
+    },
+    {
+        'id': 3,
+        'title': 'WebZone - 未来科技个人网站',
+        'description': '一个具有科幻风格和灵动丝滑UI设计的个人网站，使用Python Flask框架开发，预留了可添加个人内容的目录和栏目空间。',
+        'icon': 'fa-globe',
+        'tech': ['Python', 'Flask', 'HTML', 'CSS', 'JavaScript'],
+        'github_url': 'https://github.com/1999XIAOZHANG/WebZone'
+    },
+    # 可以在这里添加更多项目，首页会自动最多显示前3个
+    # {
+    #     'id': 3,
+    #     'title': '项目3',
+    #     'description': '项目3描述',
+    #     'icon': 'fa-code',
+    #     'tech': ['技术1', '技术2'],
+    #     'github_url': 'https://github.com/1999XIAOZHANG/project3'
+    # }
+]
+
 # 主页路由
 @app.route('/')
 def index():
@@ -31,7 +68,9 @@ def index():
         session['visitor_count'] = 0
     session['visitor_count'] += 1
     
-    return render_template('index.html', visitor_count=session['visitor_count'])
+    # 首页只显示前2个项目
+    featured_projects = projects_data[:2]
+    return render_template('index.html', visitor_count=session['visitor_count'], projects=featured_projects)
 
 # 作品集页面路由
 @app.route('/portfolio')
@@ -41,9 +80,9 @@ def portfolio():
 # 项目展示页面路由
 @app.route('/projects')
 def projects():
-    return render_template('projects.html')
+    return render_template('projects.html', projects=projects_data)
 
-# 关于我页面路由
+# 关于我们页面路由
 @app.route('/about')
 def about():
     return render_template('about.html')
@@ -52,6 +91,11 @@ def about():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+# 墙面平整度检测系统项目详情路由
+@app.route('/project1')
+def project1():
+    return render_template('project1.html')
 
 # 发送邮件提醒的函数
 def send_email_notification(name, email, subject, message_content):

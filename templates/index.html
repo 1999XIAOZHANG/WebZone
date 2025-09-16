@@ -32,7 +32,7 @@
         </div>
     </section>
     
-    <!-- 关于我区域 - 预留用于个人介绍 -->
+    <!-- 关于我们区域 - 预留用于团队介绍 -->
     <section id="about" class="about-section">
         <div class="container">
             <div class="section-header">
@@ -84,34 +84,37 @@
                 <div class="section-divider"></div>
             </div>
             
-            <div class="portfolio-grid">
-                <!-- 最新案例项目 -->
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="placeholder-portfolio">
-                                <i class="fa fa-globe"></i>
+            <div class="portfolio-columns">
+                <!-- 左侧案例项目 - 墙面平整度检测系统 -->
+                <div class="portfolio-column-left">
+                    <div class="portfolio-item" data-category="ai">
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <img src="{{ url_for('static', filename='images/project1/fengmian.png') }}" alt="基于嵌入式的墙面平整度检测系统" class="portfolio-image">
                             </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <h3 class="portfolio-title">网站项目名称</h3>
-                            <p class="portfolio-description">这个项目的详细描述，包括使用的技术和实现的功能。</p>
-                            <a href="#" class="portfolio-link">查看详情</a>
+                            <div class="portfolio-info">
+                                <h3 class="portfolio-title">基于嵌入式的墙面平整度检测系统</h3>
+                                <p class="portfolio-description">结合计算机视觉和深度学习技术，设计并实现了一种高效、高精度的墙面平整度检测系统。</p>
+                                <a href="{{ url_for('portfolio') }}" class="portfolio-link">查看详情</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="portfolio-item" data-category="design">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="placeholder-portfolio">
-                                <i class="fa fa-paint-brush"></i>
+                <!-- 右侧案例项目 - 相机标定工具 -->
+                <div class="portfolio-column-right">
+                    <div class="portfolio-item" data-category="ai">
+                        <div class="portfolio-card">
+                            <div class="portfolio-image">
+                                <div class="placeholder-portfolio">
+                                    <i class="fa fa-camera"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="portfolio-info">
-                            <h3 class="portfolio-title">UI设计项目</h3>
-                            <p class="portfolio-description">这个设计项目的详细描述，包括设计理念和工具。</p>
-                            <a href="#" class="portfolio-link">查看详情</a>
+                            <div class="portfolio-info">
+                                <h3 class="portfolio-title">相机标定工具</h3>
+                                <p class="portfolio-description">基于OpenCV开发的相机标定工具，用于相机内参和外参的计算，支持多种标定板和标定模式。</p>
+                                <a href="{{ url_for('portfolio') }}" class="portfolio-link">查看详情</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -133,50 +136,75 @@
                 <div class="section-divider"></div>
             </div>
             
-            <div class="projects-container">
-                <!-- 最新开源项目 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fa fa-brain"></i>
+            <div class="projects-columns">
+                <!-- 左侧开源项目 -->
+                <div class="projects-column-left">
+                    {% for project in projects %}
+                    {% if loop.index is odd %}
+                    <!-- GitHub开源项目 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fa {{ project.icon }}"></i>
+                            </div>
+                            <h3 class="project-title">{{ project.title }}</h3>
                         </div>
-                        <h3 class="project-title">智能助手系统</h3>
-                    </div>
-                    <div class="project-body">
-                        <p class="project-description">
-                            基于自然语言处理和机器学习技术开发的智能助手系统，能够理解用户意图并提供精准响应。
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">TensorFlow</span>
+                        <div class="project-body">
+                            <p class="project-description">
+                                {{ project.description }}
+                            </p>
+                            <div class="project-tech">
+                                <h4>相关技术：</h4>
+                                <div class="tech-tags">
+                                    {% for tech in project.tech %}
+                                    <span class="tech-tag">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <a href="{{ project.github_url }}" class="btn btn-secondary" target="_blank">
+                                <i class="fab fa-github"></i> 访问GitHub
+                            </a>
                         </div>
                     </div>
-                    <div class="project-footer">
-                        <a href="#" class="project-link">了解更多</a>
-                    </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
                 
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fa fa-chart-line"></i>
+                <!-- 右侧开源项目 -->
+                <div class="projects-column-right">
+                    {% for project in projects %}
+                    {% if loop.index is even %}
+                    <!-- GitHub开源项目 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fa {{ project.icon }}"></i>
+                            </div>
+                            <h3 class="project-title">{{ project.title }}</h3>
                         </div>
-                        <h3 class="project-title">数据分析项目</h3>
-                    </div>
-                    <div class="project-body">
-                        <p class="project-description">
-                            这个数据分析项目的详细描述，包括数据来源和分析结果。
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">Matplotlib</span>
+                        <div class="project-body">
+                            <p class="project-description">
+                                {{ project.description }}
+                            </p>
+                            <div class="project-tech">
+                                <h4>相关技术：</h4>
+                                <div class="tech-tags">
+                                    {% for tech in project.tech %}
+                                    <span class="tech-tag">{{ tech }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <a href="{{ project.github_url }}" class="btn btn-secondary" target="_blank">
+                                <i class="fab fa-github"></i> 访问GitHub
+                            </a>
                         </div>
                     </div>
-                    <div class="project-footer">
-                        <a href="#" class="project-link">了解更多</a>
-                    </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </div>
             

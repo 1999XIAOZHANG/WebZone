@@ -1,0 +1,418 @@
+{% extends 'base.html' %}
+{% block title %}基于嵌入式的墙面平整度检测系统 | Ait{% endblock %}
+
+{% block content %}
+    <!-- 项目详情标题区域 -->
+    <section class="project-header-section">
+        <div class="container">
+            <h1 class="section-title-large">
+                <span class="text-glow">基于嵌入式的墙面平整度检测系统</span>开发及应用
+            </h1>
+        </div>
+    </section>
+    
+    <!-- 项目详细内容区域 -->
+    <section class="project-content-section">
+        <div class="container">
+            <div class="row">
+                <!-- 项目左侧内容 -->
+                <div class="col-md-8">
+                    <!-- 项目概述 -->
+                    <div class="project-section">
+                        <h2 class="project-section-title">项目概述</h2>
+                        <div class="project-section-divider"></div>
+                        <p class="project-text">
+                            本项目针对建筑墙面平整度检测的自动化需求，设计并实现了一套基于嵌入式系统的高精度墙面平整度检测解决方案。传统的墙面平整度检测主要依赖人工测量，效率低且存在主观误差。本系统通过集成计算机视觉、激光测距和嵌入式技术，实现了墙面平整度的自动化、数字化检测，显著提高了检测效率和准确性。
+                        </p>
+                    </div>
+                    
+                    <!-- 研究背景 -->
+                    <div class="project-section">
+                        <h2 class="project-section-title">研究背景</h2>
+                        <div class="project-section-divider"></div>
+                        <p class="project-text">
+                            在建筑施工和质量验收过程中，墙面平整度是评估建筑质量的重要指标之一。传统的检测方法主要依靠靠尺、塞尺等工具进行人工测量，存在以下问题：
+                        </p>
+                        <ul class="project-list">
+                            <li>检测效率低，难以满足大规模建筑工程的检测需求</li>
+                            <li>检测结果受人为因素影响大，存在主观误差</li>
+                            <li>检测数据难以数字化存储和分析，不利于质量管理</li>
+                            <li>高处墙面检测存在安全隐患</li>
+                        </ul>
+                        <p class="project-text">
+                            随着建筑行业的快速发展和对施工质量要求的不断提高，开发高效、准确的墙面平整度自动化检测系统已成为行业发展的迫切需求。
+                        </p>
+                    </div>
+                    
+                    <!-- 主要研究任务 -->
+                    <div class="project-section">
+                        <h2 class="project-section-title">主要研究任务</h2>
+                        <div class="project-section-divider"></div>
+                        
+                        <!-- 任务1 -->
+                        <div class="project-task">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="project-task-image">
+                                        <img src="{{ url_for('static', filename='images/project1/1.jpg') }}" alt="双目视觉模型建立" class="project-task-image">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h3 class="project-task-title">1. 双目视觉模型建立</h3>
+                                    <p class="project-task-text">
+                                        研究并建立了高精度双目视觉测量模型，通过两台相机从不同角度同时拍摄墙面图像，利用立体视觉算法计算墙面各点的三维坐标信息。针对墙面检测的特殊需求，优化了相机标定和立体匹配算法，提高了测量精度和稳定性。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 任务2 -->
+                        <div class="project-task">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="project-task-image">
+                                        <img src="{{ url_for('static', filename='images/project1/2.jpg') }}" alt="激光光栅墙面检测算法" class="project-task-image">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h3 class="project-task-title">2. 激光光栅墙面检测算法</h3>
+                                    <p class="project-task-text">
+                                        提出了基于激光光栅投影的墙面平整度检测算法，通过向墙面投射结构光图案，结合双目视觉系统获取墙面的深度信息。开发了光栅图像分析和处理算法，能够准确识别墙面的凹凸缺陷，并计算缺陷的深度和面积信息。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 任务3 -->
+                        <div class="project-task">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="project-task-image">
+                                        <img src="{{ url_for('static', filename='images/project1/3.jpg') }}" alt="嵌入式系统设计开发" class="project-task-image">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h3 class="project-task-title">3. 嵌入式系统设计开发</h3>
+                                    <p class="project-task-text">
+                                        基于树莓派平台设计并开发了嵌入式检测系统，集成了相机模块、激光投射模块、数据处理模块和无线通信模块。优化了系统硬件架构和软件算法，在保证检测精度的同时，实现了系统的小型化、低功耗和便携性。开发了基于Python的系统控制软件，实现了数据采集、处理、存储和无线传输等功能。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 任务4 -->
+                        <div class="project-task">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="project-task-image">
+                                        <img src="{{ url_for('static', filename='images/project1/4.jpg') }}" alt="实验验证" class="project-task-image">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h3 class="project-task-title">4. 实验验证</h3>
+                                    <p class="project-task-text">
+                                        开展了大量的实验验证工作，包括系统精度测试、稳定性测试和实用性测试。在不同材质、不同光照条件的墙面上进行了检测实验，与传统人工测量方法进行了对比分析。实验结果表明，本系统的检测精度达到了4mm以内，完全满足建筑施工质量验收标准。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 实验结果 -->
+                    <div class="project-section">
+                        <h2 class="project-section-title">实验结果</h2>
+                        <div class="project-section-divider"></div>
+                        <p class="project-text">
+                            通过大量的实验验证，本系统在墙面平整度检测方面取得了显著成果：
+                        </p>
+                        <ul class="project-list">
+                            <li>检测精度：系统误差控制在4mm以内，优于建筑行业标准要求</li>
+                            <li>检测效率：单幅墙面图像检测时间小于1秒，检测速度比人工提高了10倍以上</li>
+                            <li>自动化程度：实现了从图像采集到结果分析的全自动化流程</li>
+                            <li>便携性：系统重量小于2kg，可手持或安装在移动平台上使用</li>
+                            <li>数据管理：支持检测数据的数字化存储、分析和可视化展示</li>
+                        </ul>
+                        <p class="project-text">
+                            实验结果表明，本系统能够有效替代传统的人工检测方法，显著提高墙面平整度检测的效率和准确性，具有广阔的应用前景。
+                        </p>
+                    </div>
+                    
+                    <!-- 应用前景 -->
+                    <div class="project-section">
+                        <h2 class="project-section-title">应用前景</h2>
+                        <div class="project-section-divider"></div>
+                        <p class="project-text">
+                            本项目开发的基于嵌入式的墙面平整度检测系统具有广泛的应用前景，可以应用于以下领域：
+                        </p>
+                        <ul class="project-list">
+                            <li>建筑工程施工质量控制和验收</li>
+                            <li>既有建筑的质量评估和安全检测</li>
+                            <li>墙面装修和翻新工程的质量检测</li>
+                            <li>工业设备表面平整度检测</li>
+                            <li>文物保护和修复中的表面检测</li>
+                        </ul>
+                        <p class="project-text">
+                            随着建筑行业的数字化、智能化发展，本系统的应用前景将更加广阔。未来，我们将进一步优化系统性能，拓展应用场景，为建筑行业的质量提升和智能化发展做出更大贡献。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 项目右侧信息 -->
+                <div class="col-md-4">
+                    <div class="project-sidebar">
+                        <!-- 项目信息卡片 -->
+                        <div class="project-info-card">
+                            <h3 class="project-info-title">项目信息</h3>
+                            <div class="project-info-item">
+                                <span class="project-info-label">项目名称：</span>
+                                <span class="project-info-value">基于嵌入式的墙面平整度检测系统</span>
+                            </div>
+                            <div class="project-info-item">
+                                <span class="project-info-label">技术领域：</span>
+                                <span class="project-info-value">计算机视觉、嵌入式系统、激光测量</span>
+                            </div>
+                            <div class="project-info-item">
+                                <span class="project-info-label">核心技术：</span>
+                                <span class="project-info-value">双目视觉、激光光栅、图像处理、树莓派开发</span>
+                            </div>
+                            <div class="project-info-item">
+                                <span class="project-info-label">检测精度：</span>
+                                <span class="project-info-value">误差控制在4mm以内</span>
+                            </div>
+                            <div class="project-info-item">
+                                <span class="project-info-label">应用场景：</span>
+                                <span class="project-info-value">建筑施工质量验收、墙面装修检测</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 返回按钮 -->
+                        <div class="project-back-button">
+                            <a href="{{ url_for('portfolio') }}" class="btn btn-primary">
+                                <i class="fa fa-arrow-left"></i> 返回案例集
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 项目特定的CSS样式 -->
+    <style>
+        /* 全局深色背景和白色文本 */
+        .project-header-section {
+            padding: 60px 0 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #0a1929 0%, #172a45 100%);
+            color: white;
+        }
+        
+        .project-hero-section {
+            padding: 40px 0;
+            background-color: #0a1929;
+        }
+        
+        /* 图片大小设置为页面的1/4 */
+        .project-hero-image {
+            max-width: 25%;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .project-image-large {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .project-content-section {
+            padding: 60px 0;
+            background-color: #0a1929;
+        }
+        
+        .project-section {
+            margin-bottom: 60px;
+        }
+        
+        /* 文本颜色改为白色 */
+        .project-section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .project-section-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #64ffda, #57caeb);
+            margin-bottom: 30px;
+        }
+        
+        .project-text {
+            font-size: 16px;
+            line-height: 1.8;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .project-list {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+        
+        .project-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: white;
+        }
+        
+        .project-list li:before {
+            content: "•";
+            color: #64ffda;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .project-task {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-task:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        /* 任务图片大小设置为页面的1/4 */
+        .project-task-image {
+            width: 25%;
+            min-width: 60px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+        }
+        
+        .project-task-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-task-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .project-task-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .project-task-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: white;
+        }
+        
+        .project-sidebar {
+            position: sticky;
+            top: 40px;
+        }
+        
+        .project-info-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .project-info-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #64ffda;
+            padding-bottom: 10px;
+        }
+        
+        .project-info-item {
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .project-info-label {
+            font-weight: 600;
+            color: white;
+            margin-right: 10px;
+        }
+        
+        .project-info-value {
+            color: white;
+            flex: 1;
+        }
+        
+        .project-back-button {
+            text-align: center;
+        }
+        /* 处理图片背景色，避免出现白色水平条 */
+        .project-task-image {
+            background-color: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* 增强页面的整体视觉效果 */
+        .project-header-section .section-title-large {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .project-header-section .text-glow {
+            text-shadow: 0 0 10px rgba(100, 255, 218, 0.5);
+        }
+        
+        .project-section-title:hover {
+            color: #64ffda;
+        }
+        
+        .project-info-card:hover {
+            box-shadow: 0 8px 25px rgba(100, 255, 218, 0.2);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background-color: #64ffda;
+            color: #0a1929;
+            border-color: #64ffda;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #57caeb;
+            border-color: #57caeb;
+            transform: translateY(-2px);
+        }
+    </style>
+{% endblock %}

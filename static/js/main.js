@@ -197,8 +197,10 @@ function init() {
         contactForm.addEventListener('submit', handleFormSubmit);
     }
     
-    // 初始化筛选状态
-    filterPortfolio('all');
+    // 只在作品集元素存在时初始化筛选状态
+    if (portfolioItems.length > 0) {
+        filterPortfolio('all');
+    }
 }
 
 // 页面加载完成后初始化

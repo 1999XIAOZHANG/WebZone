@@ -16,6 +16,7 @@
     --text-primary: #ffffff;
     --text-secondary: #a0a0a0;
     --text-glow: 0 0 10px var(--primary-color), 0 0 20px rgba(0, 240, 255, 0.5);
+    --text-glow-secondary: 0 0 10px var(--secondary-color), 0 0 20px rgba(0, 102, 255, 0.5);
     --box-glow: 0 0 15px rgba(0, 240, 255, 0.3), 0 0 30px rgba(0, 240, 255, 0.1);
     --transition: all 0.3s ease;
 }
@@ -174,6 +175,7 @@ body {
 main {
     position: relative;
     z-index: 1;
+    padding-top: 100px; /* 为固定导航栏留出空间 */
 }
 
 /* 英雄区域 */
@@ -205,6 +207,8 @@ main {
     margin-bottom: 20px;
     line-height: 1.2;
     position: relative;
+    white-space: nowrap;
+    overflow: visible;
 }
 
 .hero-title .text-glow {
@@ -387,6 +391,11 @@ main {
     text-shadow: var(--text-glow);
 }
 
+.text-glow-secondary {
+    color: var(--secondary-color);
+    text-shadow: var(--text-glow-secondary);
+}
+
 .section-divider {
     width: 100px;
     height: 3px;
@@ -396,7 +405,7 @@ main {
     box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
 }
 
-/* 关于我区域 */
+/* 关于我们区域 */
 .about-content {
     display: flex;
     flex-wrap: wrap;
@@ -567,6 +576,25 @@ main {
     position: relative;
 }
 
+.portfolio-image-full {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(0, 102, 255, 0.1));
+}
+
+/* 首页案例分享的图片样式 */
+.portfolio-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-image {
+    transform: scale(1.05);
+}
+
 .placeholder-portfolio {
     width: 100%;
     height: 100%;
@@ -591,12 +619,19 @@ main {
     font-size: 1.3rem;
     margin-bottom: 10px;
     color: var(--text-primary);
+    word-wrap: break-word;
+    white-space: normal;
+    overflow: visible;
 }
 
 .portfolio-description {
     color: var(--text-secondary);
     margin-bottom: 15px;
     font-size: 0.95rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow: visible;
 }
 
 .portfolio-link {
@@ -618,14 +653,55 @@ main {
     text-align: center;
 }
 
-/* 项目区域 */
+/* ===== 项目展示相关样式 ===== */
 .projects-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 50px;
+    gap: 25px;
+    margin-top: 30px;
 }
 
+/* GitHub项目页面样式 */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* 左右两栏布局 */
+.portfolio-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+}
+
+.portfolio-column-left,
+.portfolio-column-right {
+    flex: 1;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.projects-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+}
+
+.projects-column-left,
+.projects-column-right {
+    flex: 1;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* 项目卡片样式 */
 .project-card {
     background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
     border-radius: 15px;
@@ -634,6 +710,62 @@ main {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 180, 255, 0.15);
+}
+
+.project-icon {
+    color: #00b4ff;
+    margin-bottom: 15px;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.project-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #aaa;
+}
+
+.project-features h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.project-features ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.project-features li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: #ccc;
+}
+
+.project-links {
+    margin-top: 15px;
+}
+
+.github-link {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.github-link:hover {
+    color: #00b4ff;
+    transform: scale(1.05);
 }
 
 .project-card::before {
@@ -1030,6 +1162,8 @@ main {
 @media (max-width: 992px) {
     .hero-title {
         font-size: 2.8rem;
+        white-space: nowrap;
+        overflow: visible;
     }
     
     .section-title {
@@ -1053,6 +1187,8 @@ main {
     
     .hero-title {
         font-size: 2.5rem;
+        white-space: nowrap;
+        overflow: visible;
     }
     
     .circle-gradient {
@@ -1086,6 +1222,8 @@ main {
 @media (max-width: 576px) {
     .hero-title {
         font-size: 2rem;
+        white-space: nowrap;
+        overflow: visible;
     }
     
     .hero-subtitle {
