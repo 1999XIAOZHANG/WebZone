@@ -167,19 +167,19 @@ def submit_contact():
             flash('请填写所有必填字段', 'error')
             return redirect(url_for('contact'))
         
-        # 记录联系信息到文件
+        # 记录联系信息到文件（演示模式下仍会保存记录）
         record_success = record_contact_info(name, email, subject, message)
-        
-        # 发送邮件提醒
-        email_success = send_email_notification(name, email, subject, message)
         
         # 打印调试信息
         print(f"收到来自{name}({email})的消息：\n主题：{subject}\n内容：{message}")
         print(f"记录保存: {'成功' if record_success else '失败'}")
-        print(f"邮件发送: {'成功' if email_success else '失败'}")
         
-        # 重定向回联系页面并显示成功消息
-        flash('消息已成功发送，我们会尽快回复您！', 'success')
+        # 演示模式下的成功消息
+        if record_success:
+            flash('感谢您的留言！您的信息已成功记录。在正式版本中，我们会及时回复您的邮件。', 'success')
+        else:
+            flash('抱歉，记录信息时出现错误。请稍后再试。', 'error')
+            
         return redirect(url_for('contact'))
 
 if __name__ == '__main__':
